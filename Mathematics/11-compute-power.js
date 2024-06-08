@@ -23,20 +23,14 @@ const computePowerOptimised= (num, pow) => {
 
 const computePowerRecursive= (num, pow) => {
     if (pow === 0){
-        console.log(1)
         return 1;
     }
-    if(pow%2 == 0) {
-        for (let i=0; i < pow/2; i++){
-            x = num * x
-        }
-        console.log(x * x)
-    }else{
-        for (let i=0; i < pow - 1; i++){
-            x = num * x
-        }
-        console.log(x * num)
+    let temp = computePowerRecursive( num, Math.floor(pow/2))
+    if (pow % 2 == 0){
+        return temp
+    }else {
+        return (temp) * num
     }
 }
 
-computePowerOptimised(5,0)
+console.log(computePowerRecursive(3,3))
